@@ -1,0 +1,42 @@
+Receipt
+====================================
+Order Summary:
+Item: Double Cheeseburger
+Quantity: 5
+Price: 1250 PHP
+
+Total Price: 1250 PHP
+Payment Method: Cash
+====================================
+Receipt
+====================================
+Order Summary:
+Item: Spicy Chicken Bucket (6pc spicy chicken)
+Quantity: 7
+Price: 3003 PHP
+
+Total Price: 3003 PHP
+Payment Method: Cash
+====================================
+Receipt
+====================================
+Order Summary:
+Item: Combo Breakfast 1
+Quantity: 12
+Price: 828 PHP
+
+Total Price: 828 PHP
+Dining Option: Take Out
+Payment Method: Cash
+====================================
+Receipt
+====================================
+Order Summary:
+Item: Combo Breakfast 1
+Quantity: 1
+Price: 69 PHP
+
+Total Price: 69 PHP
+Dining Option: Dine In
+Payment Method: E-money
+====================================
