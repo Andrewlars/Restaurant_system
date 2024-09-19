@@ -9,3 +9,32 @@ Total Price: 195 PHP
 Dining Option: Take Out
 Payment Method: Cash
 ====================================
+Receipt
+====================================
+Order Summary:
+Item: Pancake
+Quantity: 5
+Price: 195 PHP
+
+Total Price: 195 PHP
+Dining Option: Take Out
+Payment Method: Cash
+====================================
+Receipt
+====================================
+Order Summary:
+Item: Pancake
+Quantity: 4
+Price: 156 PHP
+
+Total Price: 156 PHP
+Dining Option: Take Out
+Payment Method: Cash
+====================================
+Receipt
+====================================
+Order Summary:
+Total Price: 0 PHP
+Dining Option: Take Out
+Payment Method: Cash
+====================================
