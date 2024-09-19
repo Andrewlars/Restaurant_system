@@ -28,6 +28,11 @@ class HandleMyOrder {
         System.out.println("\nYour Order Summary:");
         int total = 0;
         for (int i = 0; i < orderCount.count ; i++) { // use orderCount from local
+        	
+        	if (orders[i] == null) {
+                continue; // Skip null orders
+            }
+        	
             String itemName = "";
             switch (orders[i].getCategory()) {
                 case "Breakfast":
@@ -105,6 +110,11 @@ class HandleMyOrder {
 
             int totalPrice = 0;
             for (int i = 0; i < orderCount.count ; i++) {
+            	
+            	if (orders[i] == null) {
+                    continue; // Skip null orders
+                }
+            	
                 String itemName = "";
                 switch (orders[i].getCategory()) {
                     case "Breakfast":
