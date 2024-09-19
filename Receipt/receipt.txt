@@ -1,0 +1,11 @@
+Receipt
+====================================
+Order Summary:
+Item: Pancake
+Quantity: 5
+Price: 195 PHP
+
+Total Price: 195 PHP
+Dining Option: Take Out
+Payment Method: Cash
+====================================

@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class OrderSystem {
+public class MainOrderSystem {
     static Scanner scanner = new Scanner(System.in);
     static Order[] orders = new Order[100];
     static OrderCount orderCount = new OrderCount(0);
@@ -96,7 +96,7 @@ public class OrderSystem {
     public static void displayOrderSummary() {
         System.out.println("\nOrder Summary:");
         int total = 0;
-        for (int i = 0; i < orderCount; i++) {
+        for (int i = 0; i < orderCount.count ; i++) {
             String itemName = "";
             switch (orders[i].getCategory()) {
             	case "Breakfast":
