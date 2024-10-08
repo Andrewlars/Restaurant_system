@@ -95,14 +95,35 @@ class HandleMyOrder {
             return;
         }
 
+        // Create the Receipt directory if it doesn't exist
         File directory = new File("Receipt");
         if (!directory.exists()) {
             directory.mkdirs(); 
         }
+        
+        // Find the next receipt number
+        int nextReceiptNumber = 1;
+        File[] existingReceipts = directory.listFiles((dir, name) -> name.startsWith("receipt") && name.endsWith(".txt"));
+        if (existingReceipts != null) {
+            for (File file : existingReceipts) {
+                String fileName = file.getName();
+                // Extract the number from "receiptX.txt" (remove "receipt" and ".txt")
+                try {
+                    int receiptNumber = Integer.parseInt(fileName.substring(7, fileName.length() - 4));
+                    if (receiptNumber >= nextReceiptNumber) {
+                        nextReceiptNumber = receiptNumber + 1; // Increment the next available number
+                    }
+                } catch (NumberFormatException e) {
+                    // Ignore files that don't follow the receiptX.txt format
+                }
+            }
+        }
 
-        try {
-            File file = new File(directory, "receipt.txt");
-            FileWriter writer = new FileWriter(file, true);
+        // Create the new receipt file with the incremented name
+        String receiptFileName = String.format("receipt%d.txt", nextReceiptNumber);
+        File file = new File(directory, receiptFileName);
+
+        try (FileWriter writer = new FileWriter(file)) {
 
             writer.write("Receipt\n");
             writer.write("====================================\n");
