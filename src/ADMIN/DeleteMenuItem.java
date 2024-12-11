@@ -26,7 +26,7 @@ public class DeleteMenuItem {
         AdminMenu ads = new AdminMenu();
         try {
             MainOrderSystem.clearScreen();
-            System.out.println("\t\t\t\t\t\tCATEGORIES");
+            System.out.println("\t\t\t\t\t\tDELETE MENU ITEM");
             System.out.println("\t\t\t===================================================================");
             System.out.println("\t\t\t|                        [1] Chicken and Platters                 |");
             System.out.println("\t\t\t|                        [2] Breakfast                            |");

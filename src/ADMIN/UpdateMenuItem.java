@@ -20,7 +20,7 @@ public class UpdateMenuItem {
     public void displayCategoryMenu() {
         AdminMenu ads = new AdminMenu();
         MainOrderSystem.clearScreen();
-        System.out.println("\t\t\t\t\t\tCATEGORIES");
+        System.out.println("\t\t\t\t\t\tUPDATE MENU ITEM");
         System.out.println("\t\t\t===================================================================");
         System.out.println("\t\t\t|                        [1] Chicken and Platters                 |");
         System.out.println("\t\t\t|                        [2] Breakfast                            |");
