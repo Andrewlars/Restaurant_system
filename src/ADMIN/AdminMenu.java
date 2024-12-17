@@ -29,6 +29,16 @@ class AdminMenu {
                 if (!scanner.hasNextInt()) {
                     System.out.println("\t\t\tInvalid input. Please enter a number between 1 and 5.");
                     scanner.nextLine();  // Clear the invalid input
+                    //timer
+                    for (int i = 3; i > 0; i--) { // Countdown 
+                        System.out.println("\t\t\t" + i + " returning in...");
+                        try {
+                            Thread.sleep(1000); // Wait for 1 second
+                        } catch (InterruptedException e) {
+                            System.out.println("Timer was interrupted!");
+                        }
+                    }
+                    //timer
                     continue;  // Restart the loop
                 }
 
@@ -55,6 +65,16 @@ class AdminMenu {
                         return;
                     default:
                         System.out.println("\t\t\tInvalid choice. Please enter a number between 1 and 5.");
+                        //timer
+                        for (int i = 3; i > 0; i--) { // Countdown 
+                            System.out.println("\t\t\t" + i + " returning in...");
+                            try {
+                                Thread.sleep(1000); // Wait for 1 second
+                            } catch (InterruptedException e) {
+                                System.out.println("Timer was interrupted!");
+                            }
+                        }
+                        //timer
                 }
             } catch (Exception e) {
                 System.err.println("\t\t\tAn error occurred: " + e.getMessage());

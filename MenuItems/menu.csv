@@ -1,11 +1,8 @@
 Item, Price, Category
-r1, 50, Burger
-pp1, 90, Drinks and Dessert
-m1, 40, Coffee
-f1, 90, Fries
-n1, 30, Breakfast
-b2, 60, Breakfast
-j1, 70, Burger
-r1, 50, Chicken and Platters
-k1, 70, Chicken and Platters
-y1, 500, Chicken and Platters
+pp1,90, Drinks and Dessert
+m1,40, Coffee
+fries 1,90, Fries
+r1,50, Burger
+chicken joy,77, Chicken and Platters
+T1, 60.00, Chicken and Platters
+breakfast, 70.00, Breakfast

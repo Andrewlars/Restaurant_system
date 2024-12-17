@@ -13,8 +13,8 @@ Order Number,Item,Quantity,Total Price,Payment Method,Dining Option,Status,Date,
 12,n1,1,30,Cash,Dine In,pending,2024-12-01,02:54 PM
 13,r1,1,50,Cash,Dine In,pending,2024-12-01,02:56 PM
 14,n1,1,30,Cash,Dine In,pending,2024-12-01,03:02 PM
-15,n1,1,30,Cash,Dine In,pending,2024-12-01,03:03 PM
-15,r1,1,50,Cash,Dine In,pending,2024-12-01,03:03 PM
+15,n1,1,30,Cash,Dine In,served,2024-12-01,03:03 PM
+15,r1,1,50,Cash,Dine In,served,2024-12-01,03:03 PM
 16,m1,1,40,Cash,Dine In,pending,2024-12-01,03:07 PM
 17,n1,1,30,E-money,Dine In,pending,2024-12-01,03:14 PM
 18,r1,1,50,Cash,Dine In,pending,2024-12-01,03:15 PM
@@ -22,5 +22,20 @@ Order Number,Item,Quantity,Total Price,Payment Method,Dining Option,Status,Date,
 20,f1,1,90,Cash,Dine In,pending,2024-12-01,03:17 PM
 21,j1,6,420,Cash,Take Out,served,2024-12-05,08:52 AM
 21,f1,7,630,Cash,Take Out,served,2024-12-05,08:52 AM
-22,j1,6,420,Cash,Dine In,pending,2024-12-05,11:45 AM
-22,b2,3,180,Cash,Dine In,pending,2024-12-05,11:45 AM
+22,j1,6,420,Cash,Dine In,served,2024-12-05,11:45 AM
+22,b2,3,180,Cash,Dine In,served,2024-12-05,11:45 AM
+23,fries 1,99,8910.00,Cash,Take Out,pending,2024-12-10,11:13 PM
+23,m1,4,160.00,Cash,Take Out,pending,2024-12-10,11:13 PM
+24,fries 1,66,5940.00,Cash,Dine In,pending,2024-12-10,11:30 PM
+25,fries 1,9,810.00,Cash,Take Out,pending,2024-12-10,11:40 PM
+26,fries 1,69,6210.00,Cash,Take Out,cancelled,2024-12-10,11:47 PM
+27,m1,55,2200.00,Cash,Take Out,cancelled,2024-12-10,11:50 PM
+28,m1,555,22200.00,Cash,Take Out,cancelled,2024-12-10,11:52 PM
+29,r1,3,150.00,Cash,Dine In,pending,2024-12-11,07:43 AM
+30,r1,2,100.00,Cash,Dine In,pending,2024-12-11,07:46 AM
+31,r1,2,100.00,Cash,Dine In,pending,2024-12-11,02:38 PM
+32,r1,1,50.00,Cash,Dine In,cancelled,2024-12-11,02:47 PM
+33,r1,1,50.00,Cash,Dine In,served,2024-12-11,02:48 PM
+34,breakfast,1,70.00,Cash,Dine In,served,2024-12-11,03:23 PM
+35,T1,2,120.00,Cash,Dine In,served,2024-12-11,03:25 PM
+35,r1,10,500.00,Cash,Dine In,served,2024-12-11,03:25 PM

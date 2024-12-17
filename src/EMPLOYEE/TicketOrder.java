@@ -170,9 +170,9 @@ public class TicketOrder {
                     String.format("%.2f PHP", order.getUnitPrice()), String.format("%.2f PHP", totalItemPrice));
             isFirstRow = false;
         }
-
+        double result = totalPrice *.12;
         System.out.println("\t\t\t========================================================================");
-        System.out.printf("\t\t\t| %-51s  %-15s |%n", "Total", String.format("%.2f PHP", totalPrice));
+        System.out.printf("\t\t\t| %-51s  %-15s |%n", "Total + Tax", String.format("%.2f PHP", totalPrice+result));
         System.out.println("\t\t\t========================================================================");
         clearScreenSmall();
 

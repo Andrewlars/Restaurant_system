@@ -68,10 +68,7 @@ public class EmployeeManager {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
             // Write the header line
-            writer.write("Username,Password");
-            writer.newLine();
 
-            // Write the employee data
             for (int i = 0; i < count; i++) {
                 writer.write(employees[i].getUsername() + "," + employees[i].getPassword());
                 writer.newLine();
