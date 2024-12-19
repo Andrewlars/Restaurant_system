@@ -34,7 +34,7 @@ public class MainOrderSystem {
 
             if (roleChoice == 0) {
                 System.out.println("\n\t\t\tExiting the program. Goodbye!");
-                break;
+                System.exit(0);
             }
 
             handleRoleSelection(roleChoice, scanner, chickenMenu, breakfastMenu, drinksAndDessertMenu, burgerMenu, coffeeMenu, friesMenu, handleOrder);
@@ -57,7 +57,7 @@ public class MainOrderSystem {
         boolean loggedIn = true;
 
         while (loggedIn) {
-            clearScreen();
+        	clearScreen();
             System.out.println("\t\t\t\t\t\tDINING OPTION");
             System.out.println("\t\t\t===================================================================");
             System.out.println("\t\t\t|                        [1] Dine In                              |");
@@ -83,10 +83,30 @@ public class MainOrderSystem {
                     System.out.println("\t\t\tLogging out...");
                     AdminAuthForLogout adminAuth = new AdminAuthForLogout();
                     if (adminAuth.login(scanner)) {
-                        System.out.println("\t\t\tLogout successful. Redirecting to role selection...");
+                        System.out.println("\t\t\tLogout successful.");
+                        //timer
+                        for (int i = 3; i > 0; i--) { // Countdown 
+                            System.out.println("\t\t\t" + i + " Redirecting to role selection...");
+                            try {
+                                Thread.sleep(1000); // Wait for 1 second
+                            } catch (InterruptedException e) {
+                                System.out.println("Timer was interrupted!");
+                            }
+                        }
+                        //timer
                         return false; // Return to role selection
                     } else {
-                        System.out.println("\t\t\tAuthentication failed. Returning to dining menu...");
+                        System.out.println("\t\t\tAuthentication failed.");
+                        //timer
+                        for (int i = 3; i > 0; i--) { // Countdown 
+                            System.out.println("\t\t\t" + i + " Returning to dining menu...");
+                            try {
+                                Thread.sleep(1000); // Wait for 1 second
+                            } catch (InterruptedException e) {
+                                System.out.println("Timer was interrupted!");
+                            }
+                        }
+                        //timer
                     }
                     break;
             }
@@ -118,6 +138,8 @@ public class MainOrderSystem {
             case 3:
                 System.out.println("\t\t\tReturning to dining options...");
                 break;
+            case 0:
+            	System.exit(0);
             default:
                 System.out.println("\t\t\tInvalid role choice. Please try again.");
         }
@@ -161,7 +183,7 @@ public class MainOrderSystem {
         while (inMainMenu) {
             clearScreen();
             System.out.println("\t\t\t\t\t\tWELCOME TO THE RESTAURANT!");
-            System.out.println("\t\t\t===================================================================");
+            System.out.println("\t\t\t==================================================================");
             System.out.println("\t\t\t|                        [1] Breakfast Menu                      |");
             System.out.println("\t\t\t|                        [2] Chicken And Platters                |");
             System.out.println("\t\t\t|                        [3] Burger Menu                         |");
@@ -170,7 +192,7 @@ public class MainOrderSystem {
             System.out.println("\t\t\t|                        [6] Fries Menu                          |");
             System.out.println("\t\t\t|                        [7] My Order                            |");
             System.out.println("\t\t\t|                        [0] Go Back                             |");
-            System.out.println("\t\t\t===================================================================\n\n");
+            System.out.println("\t\t\t==================================================================\n\n");
 
             System.out.print("\t\t\tEnter: ");
             int choice = getValidatedInput(scanner, 0, 7);
@@ -241,13 +263,13 @@ public class MainOrderSystem {
     }
 
     public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println();
         }
     }
     
     public static void clearScreenBottom() {
-        for (int i = 0; i < 30; i++) {  // Print 50 newlines
+        for (int i = 0; i < 3; i++) {  // Print 50 newlines
             System.out.println();
         }   
     }

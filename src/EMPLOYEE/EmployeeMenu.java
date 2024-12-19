@@ -38,13 +38,13 @@ public class EmployeeMenu {
         while (running) {
         	MainOrderSystem.clearScreen();  // Clear screen for each new menu
 			System.out.println("\t\t\t\t\t\tEMPLOYEE MENU");
-			System.out.println("\t\t\t====================================================================");
+			System.out.println("\t\t\t=====================================================================");
 			System.out.println("\t\t\t|                        [1] Manage Orders                          |");
 			System.out.println("\t\t\t|                        [2] Status of orders                       |");
 			System.out.println("\t\t\t|                        [3] Manual order                           |");
 			System.out.println("\t\t\t|                        [4] Order logs                             |");
 			System.out.println("\t\t\t|                        [5] Exit to Employee                       |");
-			System.out.println("\t\t\t====================================================================\n\n");
+			System.out.println("\t\t\t=====================================================================\n\n");
 			clearScreenBottom();
 
 			try {
@@ -65,7 +65,8 @@ public class EmployeeMenu {
 			        	OrderLogs.displayOrderLogs(); // Show order logs - Method should be defined in another class
 			            break;
 			        case 5:
-			            MainOrderSystem.clearScreen(); // Clear the screen before exiting
+			        	scanner.nextLine();
+			            MainOrderSystem.getRoleChoice(scanner); // Clear the screen before exiting
 			            return false;  // Exit and return to previous screen (e.g., employee role selection)
 			        default:
 			            System.out.println("\t\t\tInvalid option. Please try again.");
@@ -84,28 +85,28 @@ public class EmployeeMenu {
     
     // Method to clear the screen (top)
     public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {  // Print 50 newlines
+        for (int i = 0; i < 5; i++) {  // Print 50 newlines
             System.out.println();
         }   
     }
     
     // Method to clear the screen (bottom)
     public static void clearScreenBottom() {
-        for (int i = 0; i < 40; i++) {  // Print 40 newlines
+        for (int i = 0; i < 4; i++) {  // Print 40 newlines
             System.out.println();
         }   
     }
     
     // Main method to run the application
-    public static void main(String[] args) {
-        // Create an instance of EmployeeMenu
-        EmployeeMenu employeeMenu = new EmployeeMenu();
-        
-        // Start the employee menu
-        boolean loggedIn = employeeMenu.start();
-        
-        if (!loggedIn) {
-            System.out.println("Exiting the Employee Menu. Returning to role selection...");
-        }
-    }
+//    public static void main(String[] args) {
+//        // Create an instance of EmployeeMenu
+//        EmployeeMenu employeeMenu = new EmployeeMenu();
+//        
+//        // Start the employee menu
+//        boolean loggedIn = employeeMenu.start();
+//        
+//        if (!loggedIn) {
+//            System.out.println("\t\t\tExiting the Employee Menu. Returning to role selection...");
+//        }
+//    }
 }

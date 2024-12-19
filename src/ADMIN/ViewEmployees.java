@@ -18,9 +18,9 @@ public class ViewEmployees {
 
             // Display the table header with borders
             MainOrderSystem.clearScreen();
-            System.out.println("\n\n\t\t\t\t\t\t\t================================================================================");
-            System.out.println("\t\t\t\t\t\t\t| EmployeeId     | Name                   | Position              |");
-            System.out.println("\t\t\t\t\t\t\t================================================================================");
+            System.out.println("\t\t\t======================================================================");
+            System.out.println("\t\t\t| EmployeeId     | Name                   | Position                 |");
+            System.out.println("\t\t\t======================================================================");
 
             // Read each line and display its content
             while ((line = br.readLine()) != null) {
@@ -29,17 +29,17 @@ public class ViewEmployees {
                 // Display the employee details with borders
                 if (columns.length == 4) {
                     // Assuming the columns are EmployeeId, Name, Password, and Role
-                    System.out.printf("\t\t\t\t\t\t\t| %-14s | %-22s | %-17s | \n", 
+                    System.out.printf("\t\t\t| %-14s | %-22s | %-24s | \n", 
                                       columns[0], columns[1], columns[3]);
                 } else {
                     // Handle any line with invalid data (less than 4 columns)
-                    System.out.printf("\t\t\t\t\t\t\t| %-14s | %-22s | %-17s | \n", 
+                    System.out.printf("\t\t\t| %-14s | %-22s | %-24s | \n", 
                                       "Invalid Data", "Invalid Data", "Invalid Data");
                 }
             }
 
             // Display the table footer with borders
-            System.out.println("\t\t\t\t\t\t\t================================================================================3\n\n");
+            System.out.println("\t\t\t======================================================================\n\n");
 
         } catch (IOException e) {
             System.out.println("\t\t\tError while reading employee data: " + e.getMessage());
@@ -48,7 +48,6 @@ public class ViewEmployees {
         // Clear the bottom and prompt user to continue
         MainOrderSystem.clearScreenBottom();
         
-        System.out.print("\t\t\tPress ENTER to continue...");
-        scanner.nextLine();
+        
     }
 }

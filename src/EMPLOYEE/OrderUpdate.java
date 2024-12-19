@@ -15,7 +15,7 @@ public class OrderUpdate {
             System.out.println("\n\t\t\tChoose what you want to update:");
             System.out.println("\t\t\t1. Modify quantity");
             System.out.println("\t\t\t2. Remove order");
-            System.out.println("\t\t\t3. Cancel update");
+            System.out.println("\t\t\t3. Go back");
             System.out.print("\n\t\t\tEnter choice: ");
             if (scanner.hasNextInt()) {
                 updateChoice = scanner.nextInt();

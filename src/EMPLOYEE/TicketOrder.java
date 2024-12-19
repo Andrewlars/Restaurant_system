@@ -9,19 +9,19 @@ import java.util.stream.Collectors;
 public class TicketOrder {
 
     public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {  // Print 50 newlines
+        for (int i = 0; i < 5; i++) {  // Print 50 newlines
             System.out.println();
         }   
     }
 
     public static void clearScreenBottom() {
-        for (int i = 0; i < 30; i++) {  // Print 30 newlines
+        for (int i = 0; i < 3; i++) {  // Print 30 newlines
             System.out.println();
         }   
     }
 
     public static void clearScreenSmall() {
-        for (int i = 0; i < 20; i++) {  // Print 20 newlines
+        for (int i = 0; i < 2; i++) {  // Print 20 newlines
             System.out.println();
         }   
     }
@@ -45,21 +45,20 @@ public class TicketOrder {
                             Path modifiedFilePath = (Path) event.context();
                             if (modifiedFilePath.toString().equals(new File(csvFilePath).getName())) {
                                 // CSV file was modified, reload the orders
-                                System.out.println("CSV file changed. Reloading orders...");
+                                //System.out.println("CSV file changed. Reloading orders...");
                                 fetchOrdersFromCSV(csvFilePath); // Reload orders data
                             }
                         }
                     }
                     key.reset();
                 } catch (InterruptedException e) {
-                    System.out.println("File watcher interrupted: " + e.getMessage());
+                    System.out.println("\t\t\tFile watcher interrupted: " + e.getMessage());
                     break;
                 }
             }
         }).start();
     }
 
-    // Method to fetch the order data from the CSV file
     private static Map<String, List<Order>> fetchOrdersFromCSV(String csvFile) {
         Map<String, List<Order>> ordersMap = new HashMap<>();
         String line;
@@ -72,19 +71,20 @@ public class TicketOrder {
             // Read through the CSV file and populate the orders map
             while ((line = br.readLine()) != null) {
                 String[] orderDetails = line.split(cvsSplitBy);
-                if (orderDetails.length < 8) continue; // Skip incomplete rows
+                if (orderDetails.length < 10) continue; // Skip incomplete rows
 
                 String orderNumber = orderDetails[0].trim();
                 String itemName = orderDetails[1].trim();
                 int quantity = Integer.parseInt(orderDetails[2].trim());
-                double totalAmount = Double.parseDouble(orderDetails[3].trim().replace(" PHP", "").trim()); // Now parsing as double
+                double totalAmount = Double.parseDouble(orderDetails[3].trim().replace(" PHP", "").trim()); // Parsing as double
+                double discount = Double.parseDouble(orderDetails[9].trim().replace(" PHP", "").trim()); // Parsing the discount as double
                 String paymentMethod = orderDetails[4].trim();
                 String diningOption = orderDetails[5].trim();
                 String status = orderDetails[6].trim();
                 String date = orderDetails[7].trim();
 
-                // Removed the status check, so we include all orders regardless of status
-                Order order = new Order(orderNumber, itemName, quantity, totalAmount, paymentMethod, diningOption, date);
+                // Create the order with discount included
+                Order order = new Order(orderNumber, itemName, quantity, totalAmount, discount, paymentMethod, diningOption, date);
                 ordersMap.putIfAbsent(orderNumber, new ArrayList<>());
                 ordersMap.get(orderNumber).add(order);
             }
@@ -95,6 +95,8 @@ public class TicketOrder {
 
         return ordersMap;
     }
+
+
 
     public static void handleOrder() {
         String csvFile = "OrderRecords/order_summary.csv"; // Adjust this path if necessary
@@ -147,14 +149,15 @@ public class TicketOrder {
 
         // Find the selected order number based on index
         String selectedOrderNumber = new ArrayList<>(ordersMap.keySet()).get(selectedOrderIndex - 1);
-        System.out.println("Selected Order Number for Receipt Generation: " + selectedOrderNumber); // Debugging line
+        System.out.println("\t\t\tSelected Order Number for Receipt Generation: " + selectedOrderNumber); // Debugging line
 
         List<Order> selectedOrderItems = ordersMap.get(selectedOrderNumber);
 
         // Display the selected order details in tabular format
-        System.out.println("\t\t\t========================================================================");
-        System.out.printf("\t\t\t| %-13s  %-10s  %-10s  %-12s  %-15s |%n", "Order No.", "Quantity", "Items", "Price", "Total Price");
-        System.out.println("\t\t\t========================================================================");
+     // Display the selected order details in tabular format
+        System.out.println("\t\t\t=========================================================================================");
+        System.out.printf("\t\t\t| %-13s  %-10s  %-10s  %-12s  %-15s  %-15s |%n", "Order No.", "Quantity", "Items", "Price", "Discount", "Total Price");
+        System.out.println("\t\t\t=========================================================================================");
 
         boolean isFirstRow = true;
         double totalPrice = 0;
@@ -162,16 +165,22 @@ public class TicketOrder {
             double totalItemPrice = order.getTotalPrice();
             totalPrice += totalItemPrice;
 
-            System.out.printf("\t\t\t| %-13s  %-10d  %-10s  %-12s  %-15s |%n",
+            System.out.printf("\t\t\t| %-13s  %-10d  %-10s  %-12s  %-15s  %-15s |%n",
                     isFirstRow ? selectedOrderNumber : "",
                     order.getQuantity(), order.getItemName(),
-                    String.format("%.2f PHP", order.getUnitPrice()), String.format("%.2f PHP", totalItemPrice));
+                    String.format("%.2f PHP", order.getUnitPrice()),
+                    String.format("%.2f PHP", order.getDiscount()), // Discount is now displayed before total price
+                    String.format("%.2f PHP", totalItemPrice));
             isFirstRow = false;
         }
 
-        System.out.println("\t\t\t========================================================================");
-        System.out.printf("\t\t\t| %-51s  %-15s |%n", "Total", String.format("%.2f PHP", totalPrice));
-        System.out.println("\t\t\t========================================================================");
+        // Recalculate and display the final total with discount applied
+        double finalPrice = totalPrice - selectedOrderItems.stream().mapToDouble(Order::getDiscount).sum();
+        double result = finalPrice * 0.12;
+        System.out.println("\t\t\t=========================================================================================");
+        System.out.printf("\t\t\t| %-68s  %-15s |%n", "Total + Tax(12%): ", String.format("%.2f PHP", finalPrice + result));
+        System.out.println("\t\t\t=========================================================================================");
+
         clearScreenSmall();
 
         // Ask if the user wants to generate the receipt
@@ -193,7 +202,7 @@ public class TicketOrder {
                         break;
                     case 2:
                         // Cancel functionality (yet to be implemented)
-                    	AddDiscount.addDiscount(selectedOrderNumber);
+                        AddDiscount.addDiscount(selectedOrderNumber);
                         break;
                     case 3:
                         GenerateReceipt.generateReceipt(selectedOrderNumber);
@@ -209,6 +218,4 @@ public class TicketOrder {
                 scanner.next(); // Clear invalid input
             }
         }
-    }
-
-}
+    }}

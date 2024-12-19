@@ -19,13 +19,12 @@ public class AdminAuthForLogout {
             String inputKey = scanner.nextLine();
 
             if (inputKey.equals(hardcodedKey)) {
-                clearScreen();
-                System.out.println("\t\t\tAuthentication successful!");
+        
+                System.out.println("\n\t\t\tAuthentication successful!");
                 return true; // Login successful
             } else {
                 attemptsLeft--;
-                clearScreen();
-                System.out.println("\t\t\tInvalid key. Attempts remaining: " + attemptsLeft);
+                System.out.println("\n\t\t\tInvalid key. Attempts remaining: " + attemptsLeft);
             }
         }
 
@@ -46,14 +45,14 @@ public class AdminAuthForLogout {
 
     // Utility method to clear the screen
     public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {  // Print 50 newlines
+        for (int i = 0; i < 5; i++) {  // Print 50 newlines
             System.out.println();
         }
     }
 
     // Utility method to clear the bottom of the screen
     public static void clearScreenBottom() {
-        for (int i = 0; i < 30; i++) {  // Print 30 newlines
+        for (int i = 0; i < 3; i++) {  // Print 30 newlines
             System.out.println();
         }
     }

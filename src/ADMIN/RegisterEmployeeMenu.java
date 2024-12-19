@@ -35,11 +35,14 @@ public class RegisterEmployeeMenu {
                     switch (choice) {
                         case 1:
                             viewEmployee.viewEmployees();
+                            System.out.print("\t\t\tPress ENTER to continue...");
+                            in.nextLine();
                             break;
                         case 2:
                             register.RegisterEmployee();
                             break;
                         case 3:
+                        	viewEmployee.viewEmployees();
                             editEmployee(employeeManager, in); // Call method to edit employee
                             break;
                         case 4:
@@ -216,13 +219,13 @@ public class RegisterEmployeeMenu {
     }
 
     public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {  // Print 50 newlines
+        for (int i = 0; i < 5; i++) {  // Print 50 newlines
             System.out.println();
         }
     }
 
     public static void clearScreenBottom() {
-        for (int i = 0; i < 40; i++) {  // Print 40 newlines
+        for (int i = 0; i < 4; i++) {  // Print 40 newlines
             System.out.println();
         }
     }

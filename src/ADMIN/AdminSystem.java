@@ -26,8 +26,9 @@ public class AdminSystem {
     public void start() {
         Scanner scanner = new Scanner(System.in); // Create a new Scanner instance for user input
         int choice;
+        boolean running = true;
 
-        while (true) {
+        while (running) {
 //            MainOrderSystem.clearScreen();
             System.out.println("\t\t\t\t\t\tADMIN LOGIN");
             System.out.println("\t\t\t===================================================================");
@@ -67,7 +68,10 @@ public class AdminSystem {
                         return;
                     }
                 case 3:
-                    return;
+                	//scanner.nextLine();
+                	//System.out.println("Press Enter to continue...");
+		            MainOrderSystem.getRoleChoice(scanner);
+                    return ;
                 default:
                 	clearScreen();
                     System.out.println("\t\t\tInvalid choice. Please try again.\n");
@@ -151,13 +155,13 @@ public class AdminSystem {
     }
     
     public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {  // Print 50 newlines
+        for (int i = 0; i < 5; i++) {  // Print 50 newlines
             System.out.println();
         }   
     }
     
     public static void clearScreenBottom() {
-        for (int i = 0; i < 40; i++) {  // Print 50 newlines
+        for (int i = 0; i < 4; i++) {  // Print 50 newlines
             System.out.println();
         }   
     }

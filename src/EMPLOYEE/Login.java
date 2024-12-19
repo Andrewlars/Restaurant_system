@@ -28,10 +28,19 @@ public class Login {
                 
                 // Check if the CSV has the correct number of columns
                 if (data.length >= 3) {
-                    System.out.println("\t\t\tChecking ID: " + data[0] + ", Password: " + data[2]); // Debugging output
-
+                    //System.out.println("\t\t\tChecking ID: " + data[0] + ", Password: " + data[2]); // Debugging output
+                    
+                    System.out.println("\t\t\tChecking ID...");
+                    //timer
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        System.out.println("Timer was interrupted!");
+                    }
+                    //timer
                     // Compare employeeID and password
                     if (data[0].equals(employeeID) && data[2].equals(password)) {
+                    	System.out.println("\t\t\tEmployee login successfully...");
                         return true;  // employeeID and password match
                     }
                 }

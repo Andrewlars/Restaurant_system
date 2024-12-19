@@ -192,13 +192,13 @@ public class UpdateMenuItem {
     }
 
     public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println();
         }
     }
 
     public static void clearScreenBottom() {
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 4; i++) {
             System.out.println();
         }
     }

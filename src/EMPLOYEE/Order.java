@@ -5,16 +5,18 @@ public class Order {
     private String itemName;
     private int quantity;
     private double totalAmount;
+    private double discount; // Added discount field
     private String paymentMethod;
     private String diningOption;
     private String date;
 
-    // Constructor
-    public Order(String orderNumber, String itemName, int quantity, double totalAmount, String paymentMethod, String diningOption, String date) {
+    // Constructor with discount
+    public Order(String orderNumber, String itemName, int quantity, double totalAmount, double discount, String paymentMethod, String diningOption, String date) {
         this.orderNumber = orderNumber;
         this.itemName = itemName;
         this.quantity = quantity;
         this.totalAmount = totalAmount;
+        this.discount = discount;
         this.paymentMethod = paymentMethod;
         this.diningOption = diningOption;
         this.date = date;
@@ -88,13 +90,35 @@ public class Order {
         return date;
     }
 
+    // Getter for discount
+    public double getDiscount() {
+        return discount;
+    }
+
+    // Setter for discount
+    public void setDiscount(double discount) {
+        if (discount >= 0) {
+            this.discount = discount;
+            // Recalculate the total after discount
+            this.totalAmount = getTotalPriceAfterDiscount();
+        } else {
+            System.out.println("Discount cannot be negative.");
+        }
+    }
+
+    // Method to calculate total price after applying discount
+    public double getTotalPriceAfterDiscount() {
+        return totalAmount - discount;
+    }
+
     // Optional: ToString for easy printing of order details
     @Override
     public String toString() {
         return "Order #" + orderNumber + " - " + itemName + ": " + quantity + " x " + String.format("%.2f PHP", getUnitPrice()) + " = " + String.format("%.2f PHP", getTotalPrice());
     }
 
-	public Object getOrderNumber() {
-		return orderNumber;
-	}
+    // Getter for orderNumber
+    public Object getOrderNumber() {
+        return orderNumber;
+    }
 }

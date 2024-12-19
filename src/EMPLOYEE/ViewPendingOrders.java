@@ -108,9 +108,9 @@ public class ViewPendingOrders {
             }
 
             // Display orders by status with formatted columns
-            System.out.println("========================================================================");
-            System.out.println(String.format("%-20s%-20s%-20s", "Pending", "Preparing", "Completed"));
-            System.out.println("========================================================================");
+            System.out.println("\t\t\t========================================================================");
+            System.out.println(String.format("\t\t\t| %-20s%-20s%-20s", "Pending", "Preparing", "Completed |"));
+            System.out.println("\t\t\t========================================================================");
 
             // Get the maximum size of any order list
             int maxSize = Math.max(Math.max(pendingOrders.size(), preparingOrders.size()), completedOrders.size());
@@ -121,13 +121,13 @@ public class ViewPendingOrders {
                 String preparingOrder = (i < preparingOrders.size()) ? "Order#" + new ArrayList<>(preparingOrders.keySet()).get(i) : "";
                 String completedOrder = (i < completedOrders.size()) ? "Order#" + new ArrayList<>(completedOrders.keySet()).get(i) : "";
 
-                System.out.println(String.format("%-20s%-20s%-20s", pendingOrder, preparingOrder, completedOrder));
+                System.out.println(String.format("\t\t\t| %-20s%-20s%-20s", pendingOrder, preparingOrder, completedOrder));
             }
 
-            System.out.println("========================================================================");
+            System.out.println("\t\t\t========================================================================");
 
             // User input for selecting an order
-            System.out.print("\nSelect Order number (0 to go back): ");
+            System.out.print("\n\t\t\tSelect Order number (0 to go back): ");
             int selectedOrder = scanner.nextInt();
 
             if (selectedOrder == 0) {
@@ -141,7 +141,7 @@ public class ViewPendingOrders {
                 // Allow user to change status
                 changeOrderStatus(scanner, selected, csvFile, pendingOrders, preparingOrders, completedOrders);
             } else {
-                System.out.println("Invalid order number.");
+                System.out.println("\t\t\tInvalid order number.");
             }
 
         } catch (IOException e) {
@@ -150,10 +150,10 @@ public class ViewPendingOrders {
     }
 
     private static void changeOrderStatus(Scanner scanner, Order selectedOrder, String csvFile, Map<Integer, Order> pendingOrders, Map<Integer, Order> preparingOrders, Map<Integer, Order> completedOrders) {
-        System.out.println("\nChange the status to?");
-        System.out.println("1. Pending");
-        System.out.println("2. Preparing");
-        System.out.println("3. Completed");
+        System.out.println("\n\t\t\tChange the status to?");
+        System.out.println("\t\t\t1. Pending");
+        System.out.println("\t\t\t2. Preparing");
+        System.out.println("\t\t\t3. Completed");
         System.out.print("Enter: ");
         int choice = scanner.nextInt();
 
@@ -170,7 +170,7 @@ public class ViewPendingOrders {
                 newStatus = "completed";
                 break;
             default:
-                System.out.println("Invalid choice.");
+                System.out.println("\t\t\tInvalid choice.");
                 return;
         }
 
@@ -183,7 +183,7 @@ public class ViewPendingOrders {
         // Now save the updated status back to the CSV
         saveUpdatedStatusToCSV(csvFile, pendingOrders, preparingOrders, completedOrders);
 
-        System.out.println("Order status updated to " + newStatus + ".");
+        System.out.println("\t\t\tOrder status updated to " + newStatus + ".");
     }
 
     private static void updateOrderStatusInMap(Order selectedOrder, Map<Integer, Order> pendingOrders, Map<Integer, Order> preparingOrders, Map<Integer, Order> completedOrders) {
@@ -229,7 +229,7 @@ public class ViewPendingOrders {
                             orderDetails[6] = order.status;  // Update the status in the row
                         }
                     } catch (NumberFormatException e) {
-                        System.out.println("Skipping invalid order number in row: " + line);
+                        System.out.println("\t\t\tSkipping invalid order number in row: " + line);
                     }
                 }
 
@@ -257,10 +257,10 @@ public class ViewPendingOrders {
     }
 
     private static void displayOrderDetails(Order order) {
-    	System.out.println("========================================================================");
-        System.out.println(String.format("| %-15s%-15s%-30s%-20s%-15s |", 
+    	System.out.println("\t\t\t========================================================================");
+        System.out.println(String.format("\t\t\t| %-15s%-15s%-30s%-20s%-15s |", 
                 "Order No.", "Quantity", "Items", "Price", "Total Price"));
-        System.out.println("========================================================================");
+        System.out.println("\t\t\t========================================================================");
 
         BigDecimal totalPrice = BigDecimal.ZERO;
         for (OrderItem item : order.items) {
@@ -271,9 +271,9 @@ public class ViewPendingOrders {
             totalPrice = totalPrice.add(item.totalAmount);
         }
 
-        System.out.println("========================================================================");
-        System.out.println(String.format("| %-15s%-15s%-30s%-20s%-15s |", 
+        System.out.println("\t\t\t========================================================================");
+        System.out.println(String.format("\t\t\t| %-15s%-15s%-30s%-20s%-15s |", 
                 "", "", "", "Total", totalPrice.setScale(2, BigDecimal.ROUND_HALF_UP) + " PHP"));
-        System.out.println("========================================================================");
+        System.out.println("\t\t\t========================================================================");
     }
 }

@@ -227,13 +227,13 @@ public class AddMenuItem {
     }
     
     public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {  // Print 50 newlines
+        for (int i = 0; i < 5; i++) {  // Print 50 newlines
             System.out.println();
         }   
     }
     
     public static void clearScreenBottom() {
-        for (int i = 0; i < 40; i++) {  // Print 50 newlines
+        for (int i = 0; i < 4; i++) {  // Print 50 newlines
             System.out.println();
         }   
     }

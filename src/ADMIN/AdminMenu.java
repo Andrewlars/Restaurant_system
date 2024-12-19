@@ -51,7 +51,6 @@ class AdminMenu {
                         return;
                     case 5:
                         System.out.println("\t\t\tLogging out...");
-                        MainOrderSystem.getRoleChoice(scanner);
                         return;
                     default:
                         System.out.println("\t\t\tInvalid choice. Please enter a number between 1 and 5.");
@@ -64,13 +63,13 @@ class AdminMenu {
     }
 
     public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {  // Print 50 newlines
+        for (int i = 0; i < 5; i++) {  // Print 50 newlines
             System.out.println();
         }
     }
 
     public static void clearScreenBottom() {
-        for (int i = 0; i < 40; i++) {  // Print 40 newlines
+        for (int i = 0; i < 4; i++) {  // Print 40 newlines
             System.out.println();
         }
     }

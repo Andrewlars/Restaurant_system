@@ -16,7 +16,7 @@ public class AddDiscount {
         Scanner scanner = new Scanner(System.in);
 
         // Ask the user to input 1 for student or 2 for PWD
-        System.out.println("Enter 1 for Student or 2 for PWD (Person with Disability): ");
+        System.out.println("\t\t\tEnter 1 for Student or 2 for PWD (Person with Disability): ");
         int statusOption = scanner.nextInt();
         double discountRate = 0.0;
 
@@ -25,7 +25,7 @@ public class AddDiscount {
         } else if (statusOption == 2) {
             discountRate = 0.10;  // 10% discount for PWDs
         } else {
-            System.out.println("Invalid input. No discount will be applied.");
+            System.out.println("\t\t\tInvalid input. No discount will be applied.");
             return;  // Exit if invalid input
         }
 
@@ -77,13 +77,13 @@ public class AddDiscount {
             }
 
             if (!orderFound) {
-                System.out.println("Order number not found.");
+                System.out.println("\t\t\tOrder number not found.");
             } else {
-                System.out.println("Discount applied successfully.");
+                System.out.println("\t\t\tDiscount applied successfully.");
             }
 
         } catch (IOException e) {
-            System.out.println("Error reading or writing the CSV file: " + e.getMessage());
+            System.out.println("\t\t\tError reading or writing the CSV file: " + e.getMessage());
         }
 
         // Replace original CSV with updated data (from temporary file)
@@ -92,7 +92,7 @@ public class AddDiscount {
         if (oldFile.delete()) {
             newFile.renameTo(oldFile);  // Rename the updated temporary file to original file
         } else {
-            System.out.println("Failed to delete original file.");
+            System.out.println("\t\t\tFailed to delete original file.");
         }
     }
 }
